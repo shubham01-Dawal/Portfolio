@@ -1,145 +1,108 @@
 # Shubham Dawal — Portfolio
 
-A static, responsive personal portfolio website built with plain HTML5, CSS3
-and vanilla JavaScript. No frameworks, no backend, no database — designed to
-be hosted for free on GitHub Pages.
+A simple, responsive personal portfolio website built with **HTML5, CSS3, and Vanilla JavaScript**.
 
-## Overview
+The portfolio showcases my **education, technical skills, internship experience, projects, and contact information** for recruiters and potential employers.
 
-This site presents Shubham Dawal's education, technical skills, internship
-experience and projects to recruiters, HR professionals and internship
-providers. All content is sourced from the resume; placeholders are used for
-links that were not supplied (LinkedIn, GitHub, project demo URLs).
+## 🔗 Links
 
-## Technologies Used
+* **GitHub Repository:** https://github.com/shubham01-Dawal/Portfolio
+* **Live Demo:** https://earnest-palmier-f44e4f.netlify.app/
 
-- **HTML5** — semantic markup (`header`, `nav`, `main`, `section`, `article`, `footer`)
-- **CSS3** — custom properties (design tokens), Flexbox/Grid, glassmorphism, responsive breakpoints
-- **Vanilla JavaScript** — mobile navigation, smooth scroll, scroll-reveal animations, form validation
-- **[serve](https://www.npmjs.com/package/serve)** (dev dependency only) — for running the site locally
+## 🛠️ Technologies
 
-No React, Vite, Next.js, Angular, Vue, or backend/database is used.
+* HTML5
+* CSS3
+* JavaScript
+* Responsive Design
+* Git & GitHub
 
-## Folder Structure
+## 📁 Project Structure
 
-```
+```text
 Portfolio/
 │
 ├── assets/
-│   ├── images/          # Any images you add (profile photo, OG image, etc.)
-│   ├── icons/            # favicon.svg
+│   ├── images/
+│   ├── icons/
 │   └── resume/
-│       └── resume.pdf    # Downloadable resume
+│       └── resume.pdf
 │
 ├── css/
-│   ├── style.css         # Design tokens + main styles
-│   └── responsive.css    # Responsive breakpoints
+│   ├── style.css
+│   └── responsive.css
 │
 ├── js/
-│   ├── script.js         # Config, nav, scroll-to-top, form validation
-│   └── animations.js     # Scroll-reveal + hero typing animation
+│   ├── script.js
+│   └── animations.js
 │
 ├── index.html
 ├── package.json
-├── package-lock.json     # generated locally by `npm install`
+├── package-lock.json
 └── README.md
 ```
 
-`node_modules/` is intentionally not included — it's generated locally and
-should not be committed to GitHub.
+## ✨ Features
 
-## How to Run Locally
+* Responsive design
+* About Me section
+* Education details
+* Technical skills
+* Internship experience
+* Projects showcase
+* Resume download
+* LinkedIn and GitHub links
+* Contact section
+* Smooth scrolling
+* Scroll animations
+* Mobile-friendly navigation
 
-1. Install [Node.js](https://nodejs.org/) (only needed to run a local static
-   server — the site itself has no dependencies).
-2. From the `Portfolio/` folder, install dependencies:
+## 🚀 Run Locally
 
-   ```bash
-   npm install
-   ```
+Clone the repository:
 
-3. Start a local server:
-
-   ```bash
-   npm start
-   ```
-
-4. Open the printed local URL (typically `http://localhost:3000`) in your browser.
-
-You can also just open `index.html` directly in a browser, but running a
-local server is recommended so relative paths and fonts behave exactly as
-they will on GitHub Pages.
-
-## How to Customize
-
-Most personal details live in one place: the `portfolioData` object at the
-top of **`js/script.js`**:
-
-```js
-const portfolioData = {
-  name: "Shubham Dawal",
-  email: "shubhamdawal01@gmail.com",
-  phone: "+91 8767085008",
-  location: "Virar East, Maharashtra",
-  linkedin: "ADD_LINKEDIN_URL",
-  github: "ADD_GITHUB_URL",
-  projects: {
-    scanNDine: { github: "...", demo: "..." },
-    cafeManagementSystem: { github: "...", demo: "..." }
-  },
-  formEndpoint: ""
-};
+```bash
+git clone https://github.com/shubham01-Dawal/Portfolio.git
 ```
 
-### Update your LinkedIn URL
-Replace `"ADD_LINKEDIN_URL"` with your full profile URL, e.g.
-`"https://www.linkedin.com/in/your-handle"`. This automatically updates every
-LinkedIn link across the navbar, hero, contact section and footer.
+Open the project folder:
 
-### Update your GitHub URL
-Replace `"ADD_GITHUB_URL"` the same way — it updates every GitHub link on the site.
+```bash
+cd Portfolio
+```
 
-### Update project links
-Fill in the `github` and `demo` values inside `projects.scanNDine` and
-`projects.cafeManagementSystem` with your real repository and live-demo URLs.
+If using the local server:
 
-### Update or replace your resume
-Replace the file at `assets/resume/resume.pdf` with your own PDF, keeping the
-same filename. The "Download Resume" buttons in the navbar and hero section
-already point to `assets/resume/resume.pdf`, so no other changes are needed.
-(A resume PDF generated from the same content used across the site is
-included as a starting point — swap in your official file at any time.)
+```bash
+npm install
+npm start
+```
 
-### Connect the contact form to a real inbox
-The contact form works out of the box using a `mailto:` link (it opens the
-visitor's email client with the message pre-filled) — no backend needed on
-GitHub Pages. If you'd like messages submitted directly instead:
+Then open the local URL shown in your terminal.
 
-1. Create a free form endpoint with [Formspree](https://formspree.io/) or
-   [Web3Forms](https://web3forms.com/).
-2. Paste the endpoint URL into `formEndpoint` in `js/script.js`.
-3. The form will then POST submissions to that service automatically.
+You can also open `index.html` directly in your browser.
 
-### Add a profile photo or Open Graph image
-Add your image to `assets/images/`, then reference it where needed (e.g.
-uncomment and update the `og:image` meta tag in `index.html`).
+## 🌐 Deployment
 
-## Deploying to GitHub Pages
+This portfolio can be hosted for free using:
 
-1. Create a new GitHub repository and push this project to it (do not push `node_modules/`).
-2. In the repository, go to **Settings → Pages**.
-3. Under **Build and deployment**, set **Source** to `Deploy from a branch`.
-4. Choose the branch (e.g. `main`) and the `/ (root)` folder, then save.
-5. Your site will be published at:
+* GitHub Pages
+* Netlify
+* Vercel
 
-   ```
-   https://USERNAME.github.io/REPOSITORY-NAME/
-   ```
+### Live Website
 
-All CSS, JavaScript, image and resume paths in this project are relative, so
-the site works correctly whether it's hosted at the root of a domain or in a
-subpath like the one above.
+**https://earnest-palmier-f44e4f.netlify.app/**
 
-## License
+## 👨‍💻 About Me
 
-MIT — feel free to adapt this template for your own portfolio.
+I am a **B.Sc. Information Technology graduate** interested in web development and software development. I enjoy building responsive websites and learning new technologies.
+
+## 📬 Connect With Me
+
+* **GitHub:** https://github.com/shubham01-Dawal/Portfolio
+* **Portfolio:** https://earnest-palmier-f44e4f.netlify.app/
+
+## 📄 License
+
+This project is open source and available under the **MIT License**.
