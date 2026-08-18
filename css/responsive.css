@@ -1,28 +1,115 @@
 /* ==========================================================================
    Shubham Dawal — Portfolio
-   Responsive Breakpoints
+   Responsive Design System
    ========================================================================== */
 
-/* ---------- Large desktops (below 1440px) ---------- */
+/* ---------- Global responsive improvements ---------- */
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ==========================================================================
+   LARGE DESKTOP
+   Below 1440px
+   ========================================================================== */
+
 @media (max-width: 1440px) {
   :root {
-    --max-width: 1080px;
+    --max-width: 1120px;
+  }
+
+  .container {
+    width: min(100% - 48px, var(--max-width));
+    margin-inline: auto;
+  }
+
+  .hero-container {
+    gap: 64px;
   }
 }
 
-/* ---------- Small desktops / laptops (below 1024px) ---------- */
+
+/* ==========================================================================
+   LAPTOP / SMALL DESKTOP
+   Below 1200px
+   ========================================================================== */
+
+@media (max-width: 1200px) {
+  :root {
+    --max-width: 1040px;
+  }
+
+  .hero-container {
+    gap: 48px;
+  }
+
+  .nav-links {
+    gap: 18px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+}
+
+
+/* ==========================================================================
+   TABLET LANDSCAPE / LAPTOP
+   Below 1024px
+   ========================================================================== */
+
 @media (max-width: 1024px) {
+  .container {
+    width: min(100% - 40px, var(--max-width));
+  }
+
+  /* ---------- Hero ---------- */
+
   .hero-container {
     grid-template-columns: 1fr;
     gap: 48px;
-    padding-top: 80px;
-    padding-bottom: 40px;
+    padding-top: 72px;
+    padding-bottom: 48px;
+  }
+
+  .hero-content {
+    max-width: 760px;
   }
 
   .hero-code {
     order: 2;
-    max-width: 560px;
+    width: 100%;
+    max-width: 620px;
+    margin-inline: auto;
   }
+
+  /* ---------- About ---------- */
 
   .about-grid,
   .contact-grid {
@@ -30,46 +117,89 @@
     gap: 40px;
   }
 
+  /* ---------- Skills ---------- */
+
   .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  /* ---------- Projects ---------- */
 
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  /* ---------- Navigation ---------- */
+
   .nav-links {
-    gap: 20px;
+    gap: 16px;
+  }
+
+  .nav-link {
+    white-space: nowrap;
   }
 }
 
-/* ---------- Tablets (below 768px) ---------- */
+
+/* ==========================================================================
+   TABLET
+   Below 768px
+   ========================================================================== */
+
 @media (max-width: 768px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  /* ---------- Container ---------- */
+
   .container {
-    padding: 0 24px;
+    width: min(100% - 32px, var(--max-width));
+    padding: 0;
   }
 
   .nav-container {
+    width: 100%;
     padding: 0 20px;
   }
+
+  /* ---------- Navigation ---------- */
 
   .nav-links {
     position: fixed;
     top: var(--nav-height);
     left: 0;
     right: 0;
+
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
-    background: rgba(10, 10, 11, 0.98);
-    backdrop-filter: blur(14px);
+    align-items: stretch;
+
+    gap: 0;
+
+    width: 100%;
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+
+    padding: 10px 20px 24px;
+
+    background: rgba(10, 10, 11, 0.97);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
     border-bottom: 1px solid var(--border);
-    padding: 12px 24px 24px;
-    transform: translateY(-12px);
+
+    transform: translateY(-10px);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      visibility 0.25s ease;
+
+    z-index: 999;
   }
 
   .nav-links.open {
@@ -84,9 +214,14 @@
   }
 
   .nav-link {
-    display: block;
-    padding: 12px 0;
+    display: flex;
+    align-items: center;
+
     width: 100%;
+    min-height: 48px;
+
+    padding: 12px 4px;
+
     border-bottom: 1px solid var(--border);
   }
 
@@ -96,108 +231,424 @@
 
   .hamburger {
     display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    cursor: pointer;
   }
 
+  /* ---------- Sections ---------- */
+
   .section {
-    padding: 80px 0;
+    padding: 72px 0;
   }
 
   .section-title {
-    margin-bottom: 36px;
+    margin-bottom: 32px;
+    line-height: 1.15;
   }
+
+  /* ---------- Hero ---------- */
+
+  .hero-container {
+    gap: 40px;
+    padding-top: 64px;
+    padding-bottom: 40px;
+  }
+
+  .hero-name {
+    font-size: clamp(2.3rem, 8vw, 3.5rem);
+    line-height: 1.05;
+  }
+
+  .hero-desc {
+    max-width: 650px;
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    width: 100%;
+    max-width: 420px;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  /* ---------- Code Window ---------- */
+
+  .hero-code {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .code-window {
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .code-window-body {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* ---------- About ---------- */
 
   .about-cards {
     grid-template-columns: 1fr;
   }
 
+  /* ---------- Skills ---------- */
+
   .skills-grid {
     grid-template-columns: 1fr;
   }
 
-  .hero-buttons {
-    flex-direction: column;
-    align-items: stretch;
+  /* ---------- Projects ---------- */
+
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 
-  .hero-buttons .btn {
-    width: 100%;
-  }
-
-  .code-window {
-    transform: none;
-  }
+  /* ---------- Timeline ---------- */
 
   .timeline {
-    padding-left: 24px;
+    padding-left: 28px;
   }
 
   .timeline-marker {
-    left: -31px;
+    left: -35px;
   }
 
   .timeline-content {
     padding: 22px;
   }
 
+  /* ---------- Contact ---------- */
+
   .contact-form {
-    padding: 26px;
+    padding: 24px;
   }
 }
 
-/* ---------- Large phones (below 480px) ---------- */
+
+/* ==========================================================================
+   LARGE PHONES
+   Below 480px
+   ========================================================================== */
+
 @media (max-width: 480px) {
-  .hero-name {
-    font-size: 2.1rem;
-  }
+  /* ---------- Container ---------- */
 
-  .hero-desc {
-    font-size: 0.98rem;
-  }
-
-  .logo {
-    font-size: 1.1rem;
-  }
-
-  .btn {
-    padding: 12px 20px;
-    font-size: 0.9rem;
-  }
-
-  .project-card {
-    padding: 26px 22px;
-  }
-
-  .code-window-body {
-    font-size: 0.8rem;
-    padding: 20px 18px;
-  }
-
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-/* ---------- Small phones (below 375px) ---------- */
-@media (max-width: 375px) {
   .container {
-    padding: 0 18px;
+    width: calc(100% - 28px);
   }
 
   .nav-container {
-    padding: 0 16px;
+    padding: 0 14px;
+  }
+
+  /* ---------- Navigation ---------- */
+
+  .nav-links {
+    padding-inline: 16px;
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero-container {
+    gap: 32px;
+    padding-top: 48px;
   }
 
   .hero-name {
-    font-size: 1.8rem;
+    font-size: clamp(2rem, 11vw, 2.7rem);
+    line-height: 1.05;
+  }
+
+  .hero-desc {
+    font-size: 0.96rem;
+    line-height: 1.65;
   }
 
   .hero-buttons {
     gap: 10px;
   }
 
+  /* ---------- Logo ---------- */
+
+  .logo {
+    font-size: 1.05rem;
+  }
+
+  /* ---------- Buttons ---------- */
+
+  .btn {
+    min-height: 46px;
+    padding: 11px 18px;
+    font-size: 0.9rem;
+  }
+
+  /* ---------- Sections ---------- */
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .section-title {
+    margin-bottom: 28px;
+  }
+
+  /* ---------- Cards ---------- */
+
+  .project-card {
+    padding: 24px 20px;
+  }
+
   .about-card,
   .skill-group {
+    padding: 22px 20px;
+  }
+
+  /* ---------- Code Window ---------- */
+
+  .code-window-header {
+    padding: 10px 12px;
+  }
+
+  .code-window-body {
+    padding: 18px 16px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+
+    overflow-x: auto;
+  }
+
+  /* ---------- Timeline ---------- */
+
+  .timeline {
+    padding-left: 22px;
+  }
+
+  .timeline-marker {
+    left: -30px;
+  }
+
+  .timeline-content {
+    padding: 18px;
+  }
+
+  /* ---------- Contact ---------- */
+
+  .contact-form {
     padding: 20px;
+  }
+
+  /* ---------- Footer ---------- */
+
+  .footer-container {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
+
+
+/* ==========================================================================
+   SMALL PHONES
+   Below 375px
+   ========================================================================== */
+
+@media (max-width: 375px) {
+  :root {
+    --nav-height: 60px;
+  }
+
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .nav-container {
+    padding: 0 12px;
+  }
+
+  .nav-links {
+    padding-inline: 14px;
+  }
+
+  /* ---------- Hero ---------- */
+
+  .hero-name {
+    font-size: 1.85rem;
+  }
+
+  .hero-desc {
+    font-size: 0.92rem;
+  }
+
+  .hero-buttons {
+    gap: 8px;
+  }
+
+  /* ---------- Sections ---------- */
+
+  .section {
+    padding: 52px 0;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  /* ---------- Cards ---------- */
+
+  .about-card,
+  .skill-group {
+    padding: 18px;
+  }
+
+  .project-card {
+    padding: 20px 18px;
+  }
+
+  /* ---------- Code Window ---------- */
+
+  .code-window-body {
+    padding: 16px 14px;
+    font-size: 0.72rem;
+  }
+
+  /* ---------- Timeline ---------- */
+
+  .timeline {
+    padding-left: 18px;
+  }
+
+  .timeline-marker {
+    left: -27px;
+  }
+
+  .timeline-content {
+    padding: 16px;
+  }
+
+  /* ---------- Contact ---------- */
+
+  .contact-form {
+    padding: 18px;
+  }
+}
+
+
+/* ==========================================================================
+   EXTRA SMALL DEVICES
+   Below 320px
+   ========================================================================== */
+
+@media (max-width: 320px) {
+  .container {
+    width: calc(100% - 20px);
+  }
+
+  .hero-name {
+    font-size: 1.65rem;
+  }
+
+  .hero-desc {
+    font-size: 0.88rem;
+  }
+
+  .btn {
+    padding: 10px 14px;
+    font-size: 0.85rem;
+  }
+
+  .section {
+    padding: 44px 0;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .project-card,
+  .about-card,
+  .skill-group,
+  .contact-form {
+    padding: 16px;
+  }
+}
+
+
+/* ==========================================================================
+   LANDSCAPE PHONES
+   ========================================================================== */
+
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero-container {
+    padding-top: 36px;
+    padding-bottom: 30px;
+  }
+
+  .section {
+    padding: 50px 0;
+  }
+
+  .nav-links {
+    max-height: calc(100vh - var(--nav-height));
+    overflow-y: auto;
+  }
+}
+
+
+/* ==========================================================================
+   REDUCED MOTION
+   Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .code-window {
+    transform: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   HOVER DEVICES ONLY
+   Prevent hover effects from causing issues on touch devices
+   ========================================================================== */
+
+@media (hover: hover) and (pointer: fine) {
+  .nav-link:hover {
+    opacity: 0.8;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .project-card:hover {
+    transform: translateY(-4px);
   }
 }
